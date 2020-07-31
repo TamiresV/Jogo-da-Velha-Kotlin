@@ -51,5 +51,50 @@ class MainActivity : AppCompatActivity() {
             activyPlayer = 1
         }
         btSelected.isEnabled = false
+        checkWinner()
+    }
+
+    fun checkWinner(){
+        var winner = -1
+
+        //Line 1
+        if(player1.contains(1) && player1.contains(2) && player1.contains(3) ||
+            //Line 2
+            player1.contains(4) && player1.contains(5) && player1.contains(6) ||
+            //Line3
+            player1.contains(7) && player1.contains(8) && player1.contains(9) ||
+            //column 1
+            player1.contains(1) && player1.contains(4) && player1.contains(7) ||
+            //column 2
+            player1.contains(2) && player1.contains(5) && player1.contains(8) ||
+            //column 3
+            player1.contains(3) && player1.contains(6) && player1.contains(9) ||
+            //diagonal
+            player1.contains(1) && player1.contains(5) && player1.contains(9) ||
+            player1.contains(3) && player1.contains(5) && player1.contains(7)
+        ){
+            winner = 1
+        }
+        else if(player2.contains(1) && player2.contains(2) && player2.contains(3) ||
+            //Line 2
+            player2.contains(4) && player2.contains(5) && player2.contains(6) ||
+            //Line3
+            player2.contains(7) && player2.contains(8) && player2.contains(9) ||
+            //column 1
+            player2.contains(1) && player2.contains(4) && player2.contains(7) ||
+            //column 2
+            player2.contains(2) && player2.contains(5) && player2.contains(8) ||
+            //column 3
+            player2.contains(3) && player2.contains(6) && player2.contains(9) ||
+            //diagonal
+            player2.contains(1) && player2.contains(5) && player2.contains(9) ||
+            player2.contains(3) && player2.contains(5) && player2.contains(7)
+        ){
+            winner = 2
+        }
+
+        if(winner != -1){
+            Toast.makeText(this, "Player "+winner+" won the game!", Toast.LENGTH_SHORT).show()
+        }
     }
 }
